@@ -1,4 +1,11 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  HttpCode,
+  HttpStatus,
+} from '@nestjs/common';
 import { CurrentSettingsService } from './current-settings.service';
 import { UpdateCurrentSettingDto } from './dto/update-current-setting.dto';
 import { CurrentSettingsId } from './enums/current-settings-id.enum';
@@ -10,6 +17,7 @@ export class CurrentSettingsController {
   ) {}
 
   @Post('supply-fan-speed')
+  @HttpCode(HttpStatus.OK)
   async supplyFanSpeed(
     @Body() updateCurrentSettingDto: UpdateCurrentSettingDto,
   ) {
@@ -20,6 +28,7 @@ export class CurrentSettingsController {
   }
 
   @Post('extract-fan-speed')
+  @HttpCode(HttpStatus.OK)
   async extractFanSpeed(
     @Body() updateCurrentSettingDto: UpdateCurrentSettingDto,
   ) {
@@ -30,6 +39,7 @@ export class CurrentSettingsController {
   }
 
   @Post('room-co2-level')
+  @HttpCode(HttpStatus.OK)
   async roomCo2Level(@Body() updateCurrentSettingDto: UpdateCurrentSettingDto) {
     await this.currentSettingsService.updateCurrentSettings(
       CurrentSettingsId.ROOM_CO2_LEVEL,
@@ -38,6 +48,7 @@ export class CurrentSettingsController {
   }
 
   @Post('room-temperature')
+  @HttpCode(HttpStatus.OK)
   async roomTemperature(
     @Body() updateCurrentSettingDto: UpdateCurrentSettingDto,
   ) {
@@ -48,6 +59,7 @@ export class CurrentSettingsController {
   }
 
   @Post('outside-air-temperature')
+  @HttpCode(HttpStatus.OK)
   async outsideAirTemperature(
     @Body() updateCurrentSettingDto: UpdateCurrentSettingDto,
   ) {
