@@ -16,7 +16,7 @@ export class EngineersSettingsController {
     private readonly engineersSettingsService: EngineersSettingsService,
   ) {}
 
-  @Post('/co2-level-band')
+  @Post('co2-level-band')
   @HttpCode(HttpStatus.NO_CONTENT)
   co2LevelBand(@Body() updateEngineersSettingDto: UpdateEngineersSettingsDto) {
     return this.engineersSettingsService.updateEngineersSettings(
@@ -25,14 +25,14 @@ export class EngineersSettingsController {
     );
   }
 
-  @Get('/co2-level-band')
+  @Get('co2-level-band')
   getCo2LevelBand() {
     return this.engineersSettingsService.getEngineersSettings(
       EngineersSettingsId.CO2_LEVEL_BAND,
     );
   }
 
-  @Post('/fan-speed-settings-summer')
+  @Post('fan-speed-settings-summer')
   @HttpCode(HttpStatus.NO_CONTENT)
   fanSpeedSettingsSummer(
     @Body() updateEngineersSettingDto: UpdateEngineersSettingsDto,
@@ -43,14 +43,14 @@ export class EngineersSettingsController {
     );
   }
 
-  @Get('/fan-speed-settings-summer')
+  @Get('fan-speed-settings-summer')
   getFanSpeedSettingsSummer() {
     return this.engineersSettingsService.getEngineersSettings(
       EngineersSettingsId.FAN_SPEED_SETTINGS_SUMMER,
     );
   }
 
-  @Post('/fan-speed-settings-winter')
+  @Post('fan-speed-settings-winter')
   @HttpCode(HttpStatus.NO_CONTENT)
   fanSpeedSettingsWinter(
     @Body() updateEngineersSettingDto: UpdateEngineersSettingsDto,
@@ -61,7 +61,7 @@ export class EngineersSettingsController {
     );
   }
 
-  @Get('/fan-speed-settings-winter')
+  @Get('fan-speed-settings-winter')
   getFanSpeedSettingsWinter() {
     return this.engineersSettingsService.getEngineersSettings(
       EngineersSettingsId.FAN_SPEED_SETTINGS_WINTER,
