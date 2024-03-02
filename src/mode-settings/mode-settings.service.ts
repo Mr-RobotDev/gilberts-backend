@@ -16,6 +16,13 @@ export class ModeSettingsService {
       .exec();
   }
 
+  async getModeSetting(id: string): Promise<number | undefined> {
+    const engineersSettings = await this.modeSettingsModel
+      .findOne({ id })
+      .exec();
+    return engineersSettings?.value;
+  }
+
   modeSettings() {
     return this.modeSettingsModel.find({}, { _id: 0, __v: 0 });
   }
