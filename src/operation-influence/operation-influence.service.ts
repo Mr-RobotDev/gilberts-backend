@@ -15,4 +15,8 @@ export class OperationInfluenceService {
       .findOneAndUpdate({ id }, { value }, { new: true, upsert: true })
       .exec();
   }
+
+  operatingInfluence() {
+    return this.operationInfluenceModel.find({}, { _id: 0, __v: 0 });
+  }
 }
