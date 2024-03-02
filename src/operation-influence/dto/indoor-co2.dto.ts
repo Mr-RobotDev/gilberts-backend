@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsNumber, Max, Min } from 'class-validator';
 
-export class IndoorCo2TemperatureDto {
+export class IndoorCo2Dto {
   @IsNumber()
   @IsNotEmpty()
   @Min(0)
