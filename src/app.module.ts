@@ -7,6 +7,7 @@ import { EngineersSettingsModule } from './engineers-settings/engineers-settings
 import { CurrentSettingsModule } from './current-settings/current-settings.module';
 import { ModeSettingsModule } from './mode-settings/mode-settings.module';
 import { OperationInfluenceModule } from './operation-influence/operation-influence.module';
+import { TeacherInterfaceModule } from './teacher-interface/teacher-interface.module';
 import configuration from '../config/configuration';
 
 @Module({
@@ -27,6 +28,7 @@ import configuration from '../config/configuration';
     CurrentSettingsModule,
     ModeSettingsModule,
     OperationInfluenceModule,
+    TeacherInterfaceModule,
   ],
   controllers: [AppController],
   providers: [AppService],
