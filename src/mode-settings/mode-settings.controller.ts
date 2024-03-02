@@ -1,4 +1,11 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  HttpCode,
+  HttpStatus,
+} from '@nestjs/common';
 import { ModeSettingsService } from './mode-settings.service';
 import { UpdateUnitModeDto } from './dto/update-unit-mode.dto';
 import { UpdateOperatingModeDto } from './dto/update-operating-mode.dto';
@@ -10,6 +17,7 @@ export class ModeSettingsController {
   constructor(private readonly modeSettingsService: ModeSettingsService) {}
 
   @Post('unit-mode')
+  @HttpCode(HttpStatus.OK)
   async unitMode(@Body() updateUnitModeDto: UpdateUnitModeDto) {
     await this.modeSettingsService.updateModeSetting(
       ModeSettingsId.UNIT_MODE,
@@ -23,6 +31,7 @@ export class ModeSettingsController {
   }
 
   @Post('operating-mode')
+  @HttpCode(HttpStatus.OK)
   async operatingMode(@Body() updateOperatingModeDto: UpdateOperatingModeDto) {
     await this.modeSettingsService.updateModeSetting(
       ModeSettingsId.OPERATING_MODE,
@@ -38,6 +47,7 @@ export class ModeSettingsController {
   }
 
   @Post('heating-valve-output')
+  @HttpCode(HttpStatus.OK)
   async heatingValveOutput(@Body() updateModeSettingDto: UpdateModeSettingDto) {
     await this.modeSettingsService.updateModeSetting(
       ModeSettingsId.HEATING_VALVE_OUTPUT,
@@ -46,6 +56,7 @@ export class ModeSettingsController {
   }
 
   @Post('heat-exchanger-damper')
+  @HttpCode(HttpStatus.OK)
   async heatExchangerDamper(
     @Body() updateModeSettingDto: UpdateModeSettingDto,
   ) {
