@@ -27,7 +27,7 @@ export class ModeSettingsController {
 
   @Get('unit-mode')
   async getUnitMode() {
-    await this.modeSettingsService.getModeSetting(ModeSettingsId.UNIT_MODE);
+    return this.modeSettingsService.getModeSetting(ModeSettingsId.UNIT_MODE);
   }
 
   @Post('operating-mode')
@@ -41,7 +41,7 @@ export class ModeSettingsController {
 
   @Get('operating-mode')
   async getOperatingMode() {
-    await this.modeSettingsService.getModeSetting(
+    return this.modeSettingsService.getModeSetting(
       ModeSettingsId.OPERATING_MODE,
     );
   }

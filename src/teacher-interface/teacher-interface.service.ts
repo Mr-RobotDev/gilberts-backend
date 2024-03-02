@@ -17,9 +17,9 @@ export class TeacherInterfaceService {
   }
 
   async getTeacherInterface(id: string): Promise<number | undefined> {
-    const engineersSettings = await this.teacherInterfaceModel
+    const teacherInterface = await this.teacherInterfaceModel
       .findOne({ id })
       .exec();
-    return engineersSettings?.value;
+    return teacherInterface?.value;
   }
 }

@@ -17,10 +17,8 @@ export class ModeSettingsService {
   }
 
   async getModeSetting(id: string): Promise<number | undefined> {
-    const engineersSettings = await this.modeSettingsModel
-      .findOne({ id })
-      .exec();
-    return engineersSettings?.value;
+    const modeSettings = await this.modeSettingsModel.findOne({ id }).exec();
+    return modeSettings?.value;
   }
 
   modeSettings() {
