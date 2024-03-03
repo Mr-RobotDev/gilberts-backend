@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
@@ -9,6 +9,7 @@ import { ModeSettingsModule } from './mode-settings/mode-settings.module';
 import { OperationInfluenceModule } from './operation-influence/operation-influence.module';
 import { TeacherInterfaceModule } from './teacher-interface/teacher-interface.module';
 import configuration from '../config/configuration';
+import { LoggerMiddleware } from './common/middlewares/logger.middleware';
 
 @Module({
   imports: [
@@ -33,4 +34,8 @@ import configuration from '../config/configuration';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LoggerMiddleware).forRoutes('*');
+  }
+}
