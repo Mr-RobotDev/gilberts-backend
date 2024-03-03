@@ -22,4 +22,8 @@ export class EngineersSettingsService {
       .exec();
     return engineersSettings?.value;
   }
+
+  engineersSettings() {
+    return this.engineersSettingsModel.find({}, { _id: 0, __v: 0 });
+  }
 }

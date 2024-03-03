@@ -125,4 +125,9 @@ export class EngineersSettingsController {
       EngineersSettingsId.FAN_SPEED_SETTINGS_WINTER_LOWER,
     );
   }
+
+  @Get()
+  engineersSettings() {
+    return this.engineersSettingsService.engineersSettings();
+  }
 }
