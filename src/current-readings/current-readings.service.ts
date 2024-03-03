@@ -1,16 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { CurrentSettings } from './schema/current-setting.schema';
+import { CurrentReadings } from './schema/current-readings.schema';
 
 @Injectable()
-export class CurrentSettingsService {
+export class CurrentReadingsService {
   constructor(
-    @InjectModel(CurrentSettings.name)
-    private readonly currentSettingModel: Model<CurrentSettings>,
+    @InjectModel(CurrentReadings.name)
+    private readonly currentSettingModel: Model<CurrentReadings>,
   ) {}
 
-  updateCurrentSettings(id: string, value: number) {
+  updateCurrentReadings(id: string, value: number) {
     return this.currentSettingModel.findOneAndUpdate(
       { id },
       { value },
@@ -18,7 +18,7 @@ export class CurrentSettingsService {
     );
   }
 
-  currentSettings() {
+  currentReadings() {
     return this.currentSettingModel.find({}, { _id: 0, __v: 0 });
   }
 }

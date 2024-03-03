@@ -1,19 +1,19 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import {
-  CurrentSettingsId,
-  CurrentSettingsIdValues,
-} from '../enums/current-settings-id.enum';
+  CurrentReadingsId,
+  CurrentReadingsIdValues,
+} from '../enums/current-readings-id.enum';
 
 @Schema({ versionKey: false })
-export class CurrentSettings extends Document {
+export class CurrentReadings extends Document {
   @Prop({
     type: String,
     required: true,
-    enum: CurrentSettingsIdValues,
+    enum: CurrentReadingsIdValues,
     index: true,
   })
-  id: CurrentSettingsId;
+  id: CurrentReadingsId;
 
   @Prop({
     type: Number,
@@ -22,5 +22,5 @@ export class CurrentSettings extends Document {
   value: number;
 }
 
-export const CurrentSettingsSchema =
-  SchemaFactory.createForClass(CurrentSettings);
+export const CurrentReadingsSchema =
+  SchemaFactory.createForClass(CurrentReadings);
