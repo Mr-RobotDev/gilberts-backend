@@ -9,6 +9,7 @@ import {
 import { CurrentReadingsService } from './current-readings.service';
 import { UpdateCurrentSettingDto } from './dto/update-current-reading.dto';
 import { CurrentReadingsId } from './enums/current-readings-id.enum';
+import { PlainBody } from 'src/common/decorators/plain-body.decorator';
 
 @Controller('current-readings')
 export class CurrentReadingsController {
@@ -60,12 +61,10 @@ export class CurrentReadingsController {
 
   @Post('outside-air-temperature')
   @HttpCode(HttpStatus.OK)
-  async outsideAirTemperature(
-    @Body() updateCurrentSettingDto: UpdateCurrentSettingDto,
-  ) {
+  async outsideAirTemperature(@PlainBody() value: number) {
     await this.currentReadingsService.updateCurrentReadings(
       CurrentReadingsId.OUTSIDE_AIR_TEMPERATURE,
-      updateCurrentSettingDto.value,
+      value,
     );
   }
 
