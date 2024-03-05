@@ -6,24 +6,24 @@ import {
   HttpCode,
   HttpStatus,
 } from '@nestjs/common';
-import { OperationInfluenceService } from './operation-influence.service';
+import { OperatorInfluenceService } from './operator-influence.service';
 import { OverrideValue } from './dto/override-value.dto';
-import { OperationInfluenceId } from './enums/operation-influence-id.enum';
+import { OperatorInfluenceId } from './enums/operator-influence-id.enum';
 import { OutsideAirTemperatureDto } from './dto/outside-air-temperature.dto';
 import { InsideRoomTemperatureDto } from './dto/indoor-room-temperature.dto';
 import { IndoorCo2Dto } from './dto/indoor-co2.dto';
 
-@Controller('operation-influence')
-export class OperationInfluenceController {
+@Controller('operator-influence')
+export class OperatorInfluenceController {
   constructor(
-    private readonly operationInfluenceService: OperationInfluenceService,
+    private readonly operatorInfluenceService: OperatorInfluenceService,
   ) {}
 
   @Post('override-value')
   @HttpCode(HttpStatus.OK)
   async overrideValue(@Body() overrideValue: OverrideValue) {
-    await this.operationInfluenceService.updateOperatingInfluence(
-      OperationInfluenceId.OVERRIDE_VALUE,
+    await this.operatorInfluenceService.updateOperatingInfluence(
+      OperatorInfluenceId.OVERRIDE_VALUE,
       overrideValue.value,
     );
   }
@@ -33,8 +33,8 @@ export class OperationInfluenceController {
   async outsideAirTemperature(
     @Body() outsideAirTemperatureDto: OutsideAirTemperatureDto,
   ) {
-    await this.operationInfluenceService.updateOperatingInfluence(
-      OperationInfluenceId.OUTSIDE_AIR_TEMPERATURE,
+    await this.operatorInfluenceService.updateOperatingInfluence(
+      OperatorInfluenceId.OUTSIDE_AIR_TEMPERATURE,
       outsideAirTemperatureDto.value,
     );
   }
@@ -44,8 +44,8 @@ export class OperationInfluenceController {
   async indoorRoomTemperature(
     @Body() insideRoomTemperatureDto: InsideRoomTemperatureDto,
   ) {
-    await this.operationInfluenceService.updateOperatingInfluence(
-      OperationInfluenceId.INDOOR_ROOM_TEMPERATURE,
+    await this.operatorInfluenceService.updateOperatingInfluence(
+      OperatorInfluenceId.INDOOR_ROOM_TEMPERATURE,
       insideRoomTemperatureDto.value,
     );
   }
@@ -53,14 +53,14 @@ export class OperationInfluenceController {
   @Post('indoor-co2')
   @HttpCode(HttpStatus.OK)
   async indoorCo2(@Body() indoorCo2Dto: IndoorCo2Dto) {
-    await this.operationInfluenceService.updateOperatingInfluence(
-      OperationInfluenceId.INDOOR_CO2,
+    await this.operatorInfluenceService.updateOperatingInfluence(
+      OperatorInfluenceId.INDOOR_CO2,
       indoorCo2Dto.value,
     );
   }
 
   @Get()
   operatingInfluence() {
-    return this.operationInfluenceService.operatingInfluence();
+    return this.operatorInfluenceService.operatingInfluence();
   }
 }
