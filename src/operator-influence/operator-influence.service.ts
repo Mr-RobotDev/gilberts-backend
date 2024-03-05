@@ -16,6 +16,13 @@ export class OperatorInfluenceService {
       .exec();
   }
 
+  async getOperatingInfluence(id: string): Promise<number | undefined> {
+    const operatingInfluence = await this.operatorInfluenceModel
+      .findOne({ id })
+      .exec();
+    return operatingInfluence?.value;
+  }
+
   operatingInfluence() {
     return this.operatorInfluenceModel.find({}, { _id: 0, __v: 0 });
   }

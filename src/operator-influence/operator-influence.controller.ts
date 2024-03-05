@@ -28,6 +28,13 @@ export class OperatorInfluenceController {
     );
   }
 
+  @Get('override-value')
+  async getOverrideValue() {
+    return this.operatorInfluenceService.getOperatingInfluence(
+      OperatorInfluenceId.OVERRIDE_VALUE,
+    );
+  }
+
   @Post('outside-air-temperature')
   @HttpCode(HttpStatus.OK)
   async outsideAirTemperature(
@@ -36,6 +43,13 @@ export class OperatorInfluenceController {
     await this.operatorInfluenceService.updateOperatingInfluence(
       OperatorInfluenceId.OUTSIDE_AIR_TEMPERATURE,
       outsideAirTemperatureDto.value,
+    );
+  }
+
+  @Get('outside-air-temperature')
+  async getOutsideAirTemperature() {
+    return this.operatorInfluenceService.getOperatingInfluence(
+      OperatorInfluenceId.OUTSIDE_AIR_TEMPERATURE,
     );
   }
 
@@ -50,12 +64,26 @@ export class OperatorInfluenceController {
     );
   }
 
+  @Get('indoor-room-temperature')
+  async getIndoorRoomTemperature() {
+    return this.operatorInfluenceService.getOperatingInfluence(
+      OperatorInfluenceId.INDOOR_ROOM_TEMPERATURE,
+    );
+  }
+
   @Post('indoor-co2')
   @HttpCode(HttpStatus.OK)
   async indoorCo2(@Body() indoorCo2Dto: IndoorCo2Dto) {
     await this.operatorInfluenceService.updateOperatingInfluence(
       OperatorInfluenceId.INDOOR_CO2,
       indoorCo2Dto.value,
+    );
+  }
+
+  @Get('indoor-co2')
+  async getIndoorCo2() {
+    return this.operatorInfluenceService.getOperatingInfluence(
+      OperatorInfluenceId.INDOOR_CO2,
     );
   }
 
