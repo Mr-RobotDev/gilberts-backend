@@ -1,15 +1,7 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  HttpCode,
-  HttpStatus,
-} from '@nestjs/common';
+import { Controller, Get, Post, HttpCode, HttpStatus } from '@nestjs/common';
 import { CurrentReadingsService } from './current-readings.service';
-import { UpdateCurrentSettingDto } from './dto/update-current-reading.dto';
 import { CurrentReadingsId } from './enums/current-readings-id.enum';
-import { PlainBody } from 'src/common/decorators/plain-body.decorator';
+import { PlainBody } from '../common/decorators/plain-body.decorator';
 
 @Controller('current-readings')
 export class CurrentReadingsController {
@@ -19,43 +11,37 @@ export class CurrentReadingsController {
 
   @Post('supply-fan-speed')
   @HttpCode(HttpStatus.OK)
-  async supplyFanSpeed(
-    @Body() updateCurrentSettingDto: UpdateCurrentSettingDto,
-  ) {
+  async supplyFanSpeed(@PlainBody() value: number) {
     await this.currentReadingsService.updateCurrentReadings(
       CurrentReadingsId.SUPPLY_FAN_SPEED,
-      updateCurrentSettingDto.value,
+      value,
     );
   }
 
   @Post('extract-fan-speed')
   @HttpCode(HttpStatus.OK)
-  async extractFanSpeed(
-    @Body() updateCurrentSettingDto: UpdateCurrentSettingDto,
-  ) {
+  async extractFanSpeed(@PlainBody() value: number) {
     await this.currentReadingsService.updateCurrentReadings(
       CurrentReadingsId.EXTRACT_FAN_SPEED,
-      updateCurrentSettingDto.value,
+      value,
     );
   }
 
   @Post('room-co2-level')
   @HttpCode(HttpStatus.OK)
-  async roomCo2Level(@Body() updateCurrentSettingDto: UpdateCurrentSettingDto) {
+  async roomCo2Level(@PlainBody() value: number) {
     await this.currentReadingsService.updateCurrentReadings(
       CurrentReadingsId.ROOM_CO2_LEVEL,
-      updateCurrentSettingDto.value,
+      value,
     );
   }
 
   @Post('room-temperature')
   @HttpCode(HttpStatus.OK)
-  async roomTemperature(
-    @Body() updateCurrentSettingDto: UpdateCurrentSettingDto,
-  ) {
+  async roomTemperature(@PlainBody() value: number) {
     await this.currentReadingsService.updateCurrentReadings(
       CurrentReadingsId.ROOM_TEMPERATURE,
-      updateCurrentSettingDto.value,
+      value,
     );
   }
 

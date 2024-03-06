@@ -9,8 +9,8 @@ import {
 import { ModeSettingsService } from './mode-settings.service';
 import { UpdateUnitModeDto } from './dto/update-unit-mode.dto';
 import { UpdateOperatingModeDto } from './dto/update-operating-mode.dto';
-import { UpdateModeSettingDto } from './dto/update-mode-setting.dto';
 import { ModeSettingsId } from './enums/mode-settings-id.enum';
+import { PlainBody } from '../common/decorators/plain-body.decorator';
 
 @Controller('mode-settings')
 export class ModeSettingsController {
@@ -48,21 +48,19 @@ export class ModeSettingsController {
 
   @Post('heating-valve-output')
   @HttpCode(HttpStatus.OK)
-  async heatingValveOutput(@Body() updateModeSettingDto: UpdateModeSettingDto) {
+  async heatingValveOutput(@PlainBody() value: number) {
     await this.modeSettingsService.updateModeSetting(
       ModeSettingsId.HEATING_VALVE_OUTPUT,
-      updateModeSettingDto.value,
+      value,
     );
   }
 
   @Post('heat-exchanger-damper')
   @HttpCode(HttpStatus.OK)
-  async heatExchangerDamper(
-    @Body() updateModeSettingDto: UpdateModeSettingDto,
-  ) {
+  async heatExchangerDamper(@PlainBody() value: number) {
     await this.modeSettingsService.updateModeSetting(
       ModeSettingsId.HEAT_EXCHANGER_DAMPER,
-      updateModeSettingDto.value,
+      value,
     );
   }
 
