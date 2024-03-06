@@ -17,7 +17,6 @@ export class LoggerMiddleware implements NestMiddleware {
         } - ${responseTime}ms`,
       );
     });
-
     next();
   }
 }
