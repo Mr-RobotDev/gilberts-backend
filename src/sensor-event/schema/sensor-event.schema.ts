@@ -19,7 +19,7 @@ export class SensorEvent extends Document {
   @Prop({
     type: Object,
   })
-  data: object;
+  data: any;
 }
 
 export const SensorEventSchema = SchemaFactory.createForClass(SensorEvent);

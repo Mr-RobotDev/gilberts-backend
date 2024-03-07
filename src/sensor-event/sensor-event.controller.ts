@@ -9,4 +9,14 @@ export class SensorEventController {
   sensorEvents() {
     return this.sensorEventService.sensorEvents();
   }
+
+  @Get('/temperature-event')
+  async temperatureSensorEvent() {
+    return this.sensorEventService.temperatureSensorEvent();
+  }
+
+  @Get('/co2-event')
+  async co2SensorEvent() {
+    return this.sensorEventService.co2SensorEvent();
+  }
 }
