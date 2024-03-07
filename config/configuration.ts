@@ -6,5 +6,6 @@ export default () => ({
   },
   sensor: {
     id: process.env.SENSOR_ID,
+    co2: process.env.SENSOR_CO2,
   },
 });
