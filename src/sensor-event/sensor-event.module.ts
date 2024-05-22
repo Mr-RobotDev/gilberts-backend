@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
+import { SensorEvent, SensorEventSchema } from './schema/sensor-event.schema';
 import { SensorEventService } from './sensor-event.service';
 import { SensorEventController } from './sensor-event.controller';
-import { SensorEvent, SensorEventSchema } from './schema/sensor-event.schema';
 
 @Module({
   imports: [
