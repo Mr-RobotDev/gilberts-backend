@@ -1,8 +1,8 @@
 import { IsNumber, Max, Min } from 'class-validator';
 
-export class FanSpeedSettingsWinterUpperDto {
+export class IndoorRoomSetPointDto {
   @IsNumber()
-  @Min(0)
-  @Max(100)
+  @Min(10)
+  @Max(35)
   value: number;
 }

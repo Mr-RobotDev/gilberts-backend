@@ -17,9 +17,13 @@ export class TeacherInterfaceService {
   }
 
   async getTeacherInterface(id: string): Promise<number | undefined> {
-    const teacherInterface = await this.teacherInterfaceModel
+    const operatingInfluence = await this.teacherInterfaceModel
       .findOne({ id })
       .exec();
-    return teacherInterface?.value;
+    return operatingInfluence?.value;
+  }
+
+  async teacherInterface() {
+    return this.teacherInterfaceModel.find({}, { _id: 0, __v: 0 });
   }
 }
