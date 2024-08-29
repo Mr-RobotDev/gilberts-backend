@@ -1,8 +1,8 @@
 import { IsNumber, Max, Min } from 'class-validator';
 
-export class Co2LevelBandBottomDto {
+export class TemperatureSetPointDto {
   @IsNumber()
-  @Min(0)
-  @Max(1000)
+  @Min(10)
+  @Max(35)
   value: number;
 }

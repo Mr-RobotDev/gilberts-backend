@@ -8,63 +8,44 @@ import {
 } from '@nestjs/common';
 import { RoomSettingsService } from './room-settings.service';
 import { RoomSettingsId } from './enums/room-settings-id.enum';
-import { Co2LevelBandBottomDto } from './dto/co2-level-band-bottom.dto';
-import { Co2LevelBandTopDto } from './dto/co2-level-band-top.dto';
-import { IndoorRoomSetPointDto } from './dto/indoor-room-set-point.dto';
+import { Co2SetPointDto } from './dto/co2-set-point.dto';
+import { TemperatureSetPointDto } from './dto/temperature-set-point.dto';
 
 @Controller('room-settings')
 export class RoomSettingsController {
   constructor(private readonly roomSettingsService: RoomSettingsService) {}
 
-  @Post('co2-level-band-bottom')
+  @Post('co2-set-point')
   @HttpCode(HttpStatus.OK)
-  async co2LevelBandBottom(
-    @Body() co2LevelBandBottomDto: Co2LevelBandBottomDto,
-  ) {
+  async co2LevelBandBottom(@Body() co2LevelBandBottomDto: Co2SetPointDto) {
     await this.roomSettingsService.updateRoomSettings(
-      RoomSettingsId.CO2_LEVEL_BAND_BOTTOM,
+      RoomSettingsId.CO2_SET_POINT,
       co2LevelBandBottomDto.value,
     );
   }
 
-  @Get('co2-level-band-bottom')
+  @Get('co2-set-point')
   getCo2LevelBandBottom() {
     return this.roomSettingsService.getRoomSettings(
-      RoomSettingsId.CO2_LEVEL_BAND_BOTTOM,
+      RoomSettingsId.CO2_SET_POINT,
     );
   }
 
-  @Post('co2-level-band-top')
-  @HttpCode(HttpStatus.OK)
-  async co2LevelBandTop(@Body() co2LevelBandTopDto: Co2LevelBandTopDto) {
-    await this.roomSettingsService.updateRoomSettings(
-      RoomSettingsId.CO2_LEVEL_BAND_TOP,
-      co2LevelBandTopDto.value,
-    );
-  }
-
-  @Get('co2-level-band-top')
-  getCo2LevelBand() {
-    return this.roomSettingsService.getRoomSettings(
-      RoomSettingsId.CO2_LEVEL_BAND_TOP,
-    );
-  }
-
-  @Post('indoor-room-set-point')
+  @Post('temperature-set-point')
   @HttpCode(HttpStatus.OK)
   async indoorRoomSetPoint(
-    @Body() indoorRoomSetPointDto: IndoorRoomSetPointDto,
+    @Body() indoorRoomSetPointDto: TemperatureSetPointDto,
   ) {
     await this.roomSettingsService.updateRoomSettings(
-      RoomSettingsId.INDOOR_ROOM_SET_POINT,
+      RoomSettingsId.TEMPERATURE_SET_POINT,
       indoorRoomSetPointDto.value,
     );
   }
 
-  @Get('indoor-room-set-point')
+  @Get('temperature-set-point')
   getIndoorRoomSetPoint() {
     return this.roomSettingsService.getRoomSettings(
-      RoomSettingsId.INDOOR_ROOM_SET_POINT,
+      RoomSettingsId.TEMPERATURE_SET_POINT,
     );
   }
 
